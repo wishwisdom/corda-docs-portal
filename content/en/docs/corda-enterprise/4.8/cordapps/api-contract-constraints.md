@@ -14,7 +14,7 @@ weight: 10
 
 
 
-# Contract Constraints
+# Contract constraints
 
 Contract constraints define the versions of a CorDapp can be used to provide the contract to a transaction. The constraints
 property is stored in each state.
@@ -25,15 +25,14 @@ constraint, states can only be affected by contracts in known versions of the Co
 
 
 
-## Implicit vs Explicit Contract upgrades
+## Implicit vs explicit contract upgrades
 
 Constraints are not the only way to manage upgrades to transactions. There are two ways of handling
 upgrades to a smart contract in Corda:
 
 
-* **Implicit**: By pre-authorising multiple implementations of the contract ahead of time, using constraints.
-* **Explicit**: By creating a special *contract upgrade transaction* and getting all participants of a state to sign it using the
-contract upgrade flows.
+* **Implicitly**: By pre-authorizing multiple implementations of the contract ahead of time, using constraints.
+* **Explicitly**: By creating a special *contract upgrade transaction* and getting all participants of a state to sign it using the contract upgrade flows.
 
 The advantage of pre-authorising upgrades using constraints is that you don’t need the heavyweight process of creating
 upgrade transactions for every state on the ledger. The disadvantage is that you place more faith in third parties,
