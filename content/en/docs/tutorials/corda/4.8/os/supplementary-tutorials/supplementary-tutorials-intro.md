@@ -3,17 +3,18 @@ aliases:
 - /head/tutorials-index.html
 - /HEAD/tutorials-index.html
 - /tutorials-index.html
+- /docs/corda-os/4.8/supplementary-tutorials-index.html
+- /docs/platform/corda/4.8/os/supplementary-tutorials-index.html
 date: '2020-04-07T12:00:00Z'
 menu:
-  corda-os-4-8:
+  tutorials:
     identifier: corda-os-4-8-supplementary-tutorials-index
-    parent: corda-os-4-8-tutorials-index
+    parent: tutorials-corda-4
     weight: 1030
 tags:
 - tutorials
 title: Supplementary tutorials
 ---
-
 
 #  Supplementary tutorials
 

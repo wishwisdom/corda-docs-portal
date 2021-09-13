@@ -1,7 +1,8 @@
 ---
 date: '2021-08-27'
+section_menu: tutorials
 menu:
-  corda-os-4-8:
+  tutorials:
     identifier: corda-os-4-8-tutorial-basic-cordapp-contract
     parent: corda-os-4-8-tutorial-basic-cordapp-intro
     weight: 1040

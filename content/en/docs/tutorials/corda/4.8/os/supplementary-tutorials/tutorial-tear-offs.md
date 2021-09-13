@@ -3,6 +3,8 @@ aliases:
 - /head/tutorial-tear-offs.html
 - /HEAD/tutorial-tear-offs.html
 - /tutorial-tear-offs.html
+- /docs/corda-os/4.8/tutorial-tear-offs.html
+- /docs/platform/corda/4.8/os/tutorial-tear-offs.html
 date: '2020-04-07T12:00:00Z'
 menu:
   corda-os-4-8:

@@ -6,8 +6,9 @@ aliases:
 - /docs/corda-os/4.8/tut-two-party-introduction.html
 - /docs/platform/corda/4.8/os/tut-two-party-introduction.html
 date: '2020-04-07T12:00:00Z'
+section_menu: tutorials
 menu:
-  corda-os-4-8:
+  tutorials:
     identifier: corda-os-4-8-tut-two-party-introduction
     parent: corda-os-4-8-hello-world-introduction
     weight: 1050
