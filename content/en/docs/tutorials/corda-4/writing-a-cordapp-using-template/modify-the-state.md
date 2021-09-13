@@ -3,6 +3,8 @@ aliases:
 - /head/hello-world-state.html
 - /HEAD/hello-world-state.html
 - /hello-world-state.html
+- /docs/corda-os/4.8/modify-the-state.html
+- /docs/platform/corda/4.8/os/modify-the-state.html
 date: '2020-04-07T12:00:00Z'
 menu:
   corda-os-4-8:

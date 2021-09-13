@@ -3,6 +3,8 @@ aliases:
 - /head/tut-two-party-contract.html
 - /HEAD/tut-two-party-contract.html
 - /tut-two-party-contract.html
+- /docs/corda-os/4.8/tut-two-party-contract.html
+- /docs/platform/corda/4.8/os/tut-two-party-contract.html
 date: '2020-04-07T12:00:00Z'
 menu:
   corda-os-4-8:

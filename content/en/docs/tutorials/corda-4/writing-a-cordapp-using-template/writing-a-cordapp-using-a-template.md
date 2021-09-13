@@ -3,17 +3,18 @@ aliases:
 - /head/hello-world-introduction.html
 - /HEAD/hello-world-introduction.html
 - /hello-world-introduction.html
+- /docs/corda-os/4.8/writing-a-cordapp-using-a-template.html
+- /docs/platform/corda/4.8/os/writing-a-cordapp-using-a-template.html
 date: '2020-04-07T12:00:00Z'
 menu:
-  corda-os-4-8:
+  tutorials:
     identifier: corda-os-4-8-hello-world-introduction
-    parent: corda-os-4-8-tutorials-index
+    parent: tutorials-corda-4
     weight: 1010
 tags:
 - introduction
 title: Writing a CorDapp using a template
 ---
-
 
 # Writing a CorDapp using a template
 
@@ -36,7 +37,6 @@ Before starting the tutorial steps, you should:
 * [Familiarize yourself with Corda’s key concepts](key-concepts.md)
 * [Get set up for CorDapp development](getting-set-up.md)
 * [Run your first CorDapp](tutorial-cordapp.md)
-
 
 ## Use case
 

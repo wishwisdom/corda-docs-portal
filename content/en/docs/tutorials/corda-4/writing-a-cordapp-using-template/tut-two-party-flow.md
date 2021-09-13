@@ -3,6 +3,8 @@ aliases:
 - /head/tut-two-party-flow.html
 - /HEAD/tut-two-party-flow.html
 - /tut-two-party-flow.html
+- /docs/corda-os/4.8/tut-two-party-flow.html
+- /docs/platform/corda/4.8/os/tut-two-party-flow.html
 date: '2020-04-07T12:00:00Z'
 menu:
   corda-os-4-8:
