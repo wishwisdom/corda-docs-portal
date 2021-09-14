@@ -126,7 +126,7 @@ sends some data to another flow, but the latter flow has already ended
 * Ensure that all versions of the existing flow have finished running and there are no pending `SchedulableFlows` on
 any of the nodes on the business network. This can be done by *draining the node* (see below).
 * Shut down the node.
-* Replace the existing CorDapp JAR with the CorDapp JAR containing the new flow.
+* Replace the existing CorDapp `.jar` with the CorDapp `.jar` containing the new flow.
 * Start the node.
 
 If you shut down all nodes and upgrade them all at the same time, any incompatible change can be made.
@@ -400,7 +400,7 @@ interface UpgradedContractWithLegacyConstraint<in OldState : ContractState, out 
 }
 ```
 
-For example, in case of hash constraints the hash of the legacy JAR file should be provided:
+For example, in case of hash constraints the hash of the legacy `.jar` file should be provided:
 
 ```kotlin
 override val legacyContractConstraint: AttachmentConstraint
@@ -408,14 +408,14 @@ override val legacyContractConstraint: AttachmentConstraint
 ```
 
 
-#### 3. Create the new CorDapp JAR
+#### 3. Create the new CorDapp `.jar`
 
-Produce a new CorDapp JAR file. This JAR file should only contain the new contract and state definitions.
+Produce a new CorDapp `.jar` file. This `.jar` file should only contain the new contract and state definitions.
 
 
-#### 4. Distribute the new CorDapp JAR
+#### 4. Distribute the new CorDapp `.jar`
 
-Place the new CorDapp JAR file in the `cordapps` folder of all the relevant nodes. You can do this while the nodes are still
+Place the new CorDapp `.jar` file in the `cordapps` folder of all the relevant nodes. You can do this while the nodes are still
 running.
 
 

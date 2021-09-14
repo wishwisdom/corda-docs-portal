@@ -45,7 +45,7 @@ Corda does not embed the actual verification bytecode in transactions. The logic
 
 ### The basic threat model and security requirement.
 
-Being a decentralized system, anyone who can build transactions can create `.java` files, compile and bundle them in a JAR, and then reference
+Being a decentralized system, anyone who can build transactions can create `.java` files, compile and bundle them in a `.jar`, and then reference
 this code in the transaction he created. If it were possible to do this without any restrictions, an attacker seeking to steal your money,
 for example, might create a transaction that transitions a `Cash` contract owned by you to one owned by the attacker.
 The only thing that is protecting your `Cash` is the contract verification code, so all the attacker has to do is attach a version of the
@@ -58,7 +58,7 @@ To prevent the types of attacks that can arise if there were no restrictions on 
 implementations of Contract classes were attached to transactions, we provide the contract constraints mechanism to complement the class name.
 This mechanism allows the state to specify exactly what code can be attached.
 In Corda 4, for example, the state can say: “I’m ok to be spent if the transaction is verified by a class: `com.megacorp.megacontract.MegaContract` as
-long as the JAR containing this contract is signed by `Mega Corp`”.
+long as the `.jar` containing this contract is signed by `Mega Corp`”.
 
 
 
@@ -92,13 +92,13 @@ The `Apples` and `Oranges` states that will be consumed in this new transaction 
 It is these `TransactionState`s that specify the fully qualified names of the contract code that should be run to verify their consumption as well as,
 importantly, the governing `constraint`s on which specific implementations of that class name can be used.
 The swap transaction would contain the two input states, the two output states with the new owners of the fruit and the code to be used to deserialize and
-verify the transaction as two attachment IDs - which are SHA-256 hashes of the apples and oranges CorDapps (more specifically, the contracts JAR).
+verify the transaction as two attachment IDs - which are SHA-256 hashes of the apples and oranges CorDapps (more specifically, the contracts `.jar`).
 
 
 {{< note >}}
 The attachment ID is a cryptographic hash of a file. Any node calculates this hash when it downloads the file from a peer (during transaction resolution) or from
 another source, and thus knows that it is the exact file that any other party verifying this transaction will use. In the current version of
-Corda, nodes won’t load JARs downloaded from a peer into a classloader. This is a temporary security measure until we integrate the
+Corda, nodes won’t load `.jar` files downloaded from a peer into a classloader. This is a temporary security measure until we integrate the
 Deterministic JVM Sandbox, which will be able to isolate network loaded code from sensitive data.
 
 {{< /note >}}
@@ -122,7 +122,7 @@ with those of any input states of the same type. This is explained more fully as
 
 {{< /note >}}
 The rule for contract code attachment validity checking is that for each state there must be one and only one attachment that contains the fully qualified contract class name.
-This attachment will be identified as the CorDapp JAR corresponding to that state and thus it must satisfy the constraint of that state.
+This attachment will be identified as the CorDapp `.jar` corresponding to that state and thus it must satisfy the constraint of that state.
 For example, if one state is signature constrained, the corresponding attachment must be signed by the key specified in the state.
 If this rule is breached the transaction is considered invalid even if it is signed by all the required parties, and any compliant node will refuse to execute
 the verification code.
@@ -184,19 +184,19 @@ There are 2 options to achieve this (given the hypothetical `Apples` for `Orange
 
 
 
-* Bundle the `Fruit` library with the CorDapp. This means creating a Fat-JAR containing all the required code.
+* Bundle the `Fruit` library with the CorDapp. This means creating a fat `.jar` containing all the required code.
 * Add the dependency as another attachment to the transaction manually.
 
 
 These options have pros and cons, which are now discussed:
 
 The first approach is fairly straightforward and does not require any additional setup. Just declaring a `compile` dependency
-will by default bundle the dependency with the CorDapp. One obvious drawback is that CorDapp JARs can grow quite large in case they depend on
+will by default bundle the dependency with the CorDapp. One obvious drawback is that CorDapp `.jar` files can grow quite large in case they depend on
 large libraries. Other more subtle drawbacks will be discussed below.
 
 
 The second approach is more flexible in cases where multiple applications depend on the same library but it currently requires an additional
-security check to be included in the contract code. The reason is that given that anyone can create a JAR containing a class your CorDapp depends on, a malicious actor
+security check to be included in the contract code. The reason is that given that anyone can create a `.jar` containing a class your CorDapp depends on, a malicious actor
 could just create his own version of the library and attach that to the transaction instead of the legitimate one your code expects. This would allow
 the attacker to change the intended behavior of your contract to his advantage.
 See [Code samples for dependent libraries and CorDapps](#code-samples-for-dependent-libraries-and-cordapps) for an example.
@@ -220,7 +220,7 @@ to be correct by the constraints mechanism, must verify that all dependencies ar
 ### CorDapps depending on the same library.
 
 It should be evident now that each CorDapp must add its own dependencies to the transaction, but what happens when two CorDapps depend on different versions of the same library?
-The node that is building the transaction must ensure that the attached JARs contain all code needed for all CorDapps and also do not break the *no-overlap* rule.
+The node that is building the transaction must ensure that the attached `.jar` files contain all code needed for all CorDapps and also do not break the *no-overlap* rule.
 
 In the above example, if the `Apples` code depends on `Fruit v3.2` and the `Oranges` code depends on `Fruit v3.4` that would be impossible to achieve,
 because of the overlap over some of the fruit classes.
@@ -262,18 +262,18 @@ It also supports `cordaCompile`, which assumes the dependency is available so it
 We presented the “complex” business requirement earlier where the `Apples` contract has to check that it can’t allow swapping Pink Lady apples for anything
 but Valencia Oranges. This requirement translates into the fact that the library that the `Apples` CorDapp depends on is itself a CorDapp (the `Oranges` CorDapp).
 
-Let’s assume the `Apples` CorDapp bundles the `Oranges` CorDapp as a fat-jar.
+Let’s assume the `Apples` CorDapp bundles the `Oranges` CorDapp as a fat `.jar`.
 If someone attempts to build a swap transaction they would find it impossible:
 
 
 
 * If the two attachments are added to the transaction, then the `com.orangecompany.Orange` class would be found in both, and that would breat the rule that states
 “There can be only one and precisely one attachment that is identified as the contract code that controls each state”.
-* In case only the `Apples` CorDapp is attached then the constraint of the `Oranges` states would not pass, as the JAR would not be signed by the actual `OrangeCo`.
+* In case only the `Apples` CorDapp is attached then the constraint of the `Oranges` states would not pass, as the `.jar` would not be signed by the actual `OrangeCo`.
 
 
 Another example that shows that bundling is not an option when depending on another CorDapp is if the `Fruit` library contains a ready to use `Banana` contract.
-Also let’s assume that the `Apples` and `Oranges` CorDapps bundle the *Fruit* library inside their distribution fat-jar.
+Also let’s assume that the `Apples` and `Oranges` CorDapps bundle the *Fruit* library inside their distribution fat `.jar`.
 In this case `Apples` for `Oranges` swaps would work fine if the two CorDapps use the same version of `Fruit`, but what if someone attempts to swap `Apples` for `Bananas`?
 They would face the same problem as described above and would not be able to build such a transaction.
 
@@ -292,7 +292,7 @@ The highly recommended solution for CorDapp to CorDapp dependency is to always m
 
 Another way to look at bundling third party CorDapps is from the point of view of identity. With the introduction of the `SignatureConstraint`, CorDapps will be signed
 by their creator, so the signature will become part of their identity: `com.fruitcompany.Banana` signed by the `FruitCo`.
-But if another CorDapp developer, `OrangeCo` bundles the `Fruit` library, they must strip the signatures from the `FruitCo` and sign the JAR themselves.
+But if another CorDapp developer, `OrangeCo` bundles the `Fruit` library, they must strip the signatures from the `FruitCo` and sign the `.jar` themselves.
 This will create a `com.fruitcompany.Banana` signed by the `OrangeCo`, so there could be two types of Banana states on the network,
 but “owned” by two different parties. This means that while they might have started using the same code, nothing stops these `Banana` contracts from diverging.
 Parties on the network receiving a `com.fruitcompany.Banana` will need to explicitly check the constraint to understand what they received.
@@ -353,7 +353,7 @@ requireThat(require -> {
 {{< /tabs >}}
 
 
-In case the dependency has to be signed by a known public key the contract must check that there is a JAR attached that contains that class name and is signed by the right key:
+In case the dependency has to be signed by a known public key the contract must check that there is a `.jar` attached that contains that class name and is signed by the right key:
 
 {{< tabs name="tabs-3" >}}
 {{% tab name="kotlin" %}}
@@ -375,8 +375,8 @@ requireThat(require -> {
 
 {{< note >}}
 Dependencies that are not Corda specific need to be imported using the *uploadAttachment* RPC command. The reason for this is that in Corda 4
-only JARs containing contracts are automatically imported in the `AttachmentStorage`. It needs to be in the `AttachmentStorage` because
-that’s the only way to attach JARs to a transaction.
+only `.jar` files containing contracts are automatically imported in the `AttachmentStorage`. It needs to be in the `AttachmentStorage` because
+that’s the only way to attach `.jar` files to a transaction.
 
 {{< /note >}}
 

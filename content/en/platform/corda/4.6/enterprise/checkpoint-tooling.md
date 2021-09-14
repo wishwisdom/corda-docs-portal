@@ -253,7 +253,7 @@ checkpoint-agent.jar=instrumentType=read,instrumentClassname=NONE
 and use the `checkpoints dump` shell command to trigger diagnostics collection.
 
 {{< warning >}}
-The checkpoint agent JAR file must be called “checkpoint-agent.jar” as the checkpoint dump support code uses Java reflection to
+The checkpoint agent `.jar` file must be called “checkpoint-agent.jar” as the checkpoint dump support code uses Java reflection to
 determine whether the VM has been instrumented or not at runtime.
 {{< /warning >}}
 

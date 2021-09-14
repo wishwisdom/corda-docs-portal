@@ -214,7 +214,7 @@ You need to restart the node:
 
 ## Archive Service command-line tool
 
-The command-line tool is a 'fat-jar' that can be executed directly using the `java -jar` option.
+The command-line tool is a fat `.jar` that can be executed directly using the `java -jar` option.
 
 ```text
 $ java -jar corda-tools-archive-service-1.0.1.jar --help

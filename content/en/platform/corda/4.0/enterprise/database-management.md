@@ -75,10 +75,10 @@ Liquibase is a tool that implements an automated, version based database migrati
 large number of databases. It works by maintaining a list of applied changesets. A changeset can be something very
 simple like adding a new column to a table. It stores each executed changeset with columns like id, author, timestamp,
 description, md5 hash, etc in a table called `DATABASECHANGELOG`. This changelog table will be read every time a
-migration command is run to determine what change-sets need to be executed. It represents the “version” of the database
-(the sum of the executed change-sets at any point). Change-sets are scripts written in a supported format (xml, yml,
+migration command is run to determine what changesets need to be executed. It represents the “version” of the database
+(the sum of the executed changesets at any point). changesets are scripts written in a supported format (xml, yml,
 sql), and should never be modified once they have been executed. Any necessary correction should be applied in a new
-change-set.
+changeset.
 
 For documentation around Liquibase see: [The Official website](http://www.liquibase.org) and [Tutorial](https://www.thoughts-on-java.org/database-migration-with-liquibase-getting-started).
 
@@ -102,7 +102,7 @@ implemented the usual best practices for database management (e.g. running a bac
 Corda provides migration scripts in an XML format for its internal node and vault tables. CorDapps should provide
 migration scripts for the tables they manage. In Corda, `MappedSchemas` (see [API: Persistence](api-persistence.md)) manage JPA
 Entities and thus the corresponding database tables. So `MappedSchemas` are the natural place to point to the
-changelog file(s) that contain the change-sets for those tables. Nodes can configure which `MappedSchemas` are included
+changelog file(s) that contain the changesets for those tables. Nodes can configure which `MappedSchemas` are included
 which means only the required tables are created. To follow standard best practices, our convention for structuring the
 change-logs is to have a “master” changelog file per `MappedSchema` that will only include release change-logs (see example below).
 

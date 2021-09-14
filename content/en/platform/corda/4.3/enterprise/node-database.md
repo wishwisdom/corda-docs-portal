@@ -68,9 +68,9 @@ Liquibase is a tool that implements an automated, version based database migrati
 It works by maintaining a list of applied changesets. A changeset can be something very simple like adding a new column to a table.
 It stores each executed changeset with columns like id, author, timestamp, description, md5 hash, etc in a table called `DATABASECHANGELOG`.
 This changelog table will be read every time a migration command is run to determine
-what change-sets need to be executed. It represents the “version” of the database (the sum of the executed change-sets at any point).
-Change-sets are scripts written in a supported format (xml, yml, sql), and should never be modified once they have been executed.
-Any necessary correction should be applied in a new change-set.
+what changesets need to be executed. It represents the “version” of the database (the sum of the executed changesets at any point).
+Changesets are scripts written in a supported format (xml, yml, sql), and should never be modified once they have been executed.
+Any necessary correction should be applied in a new changeset.
 Understanding [how Liquibase works](https://www.thoughts-on-java.org/database-migration-with-liquibase-getting-started)
 is highly recommended for understanding how database migrations work in Corda.
 

@@ -23,7 +23,7 @@ To deploy a new CorDapp on a node:
 you should follow a procedure for database upgrade in production system shown below,
 or for development/test environment described in node-development-cordapp-deployment
 which contains a simplified databased upgrade process.
-* Copy CorDapp JARs into `cordapps` directory of the node.
+* Copy CorDapp `.jar` files into `cordapps` directory of the node.
 * Restart the node
 
 
@@ -43,7 +43,7 @@ Because of that, most of the steps are similar to those described in [Database s
 ### 1. Check if the CorDapp requires custom tables
 
 Refer to the CorDapp documentation or consult a CorDapp provider if the CorDapp requires custom backing tables.
-You can verify a CorDapp JAR manually to check the presence of script files inside *migration* director, e.g. for Linux:
+You can verify a CorDapp `.jar` manually to check the presence of script files inside *migration* director, e.g. for Linux:
 
 
 ```bash

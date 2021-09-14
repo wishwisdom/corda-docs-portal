@@ -42,8 +42,8 @@ you should immediately be able to run it from a shell by typing `java -jar jmete
 
 ### Installing JMeter server
 
-The same JAR file used for running the client can be run as a server as well by starting it with the `-s` flag as part
-of the JMeter arguments. It can be installed by simply copying the JAR file to the server and having an adequate JRE
+The same `.jar` file used for running the client can be run as a server as well by starting it with the `-s` flag as part
+of the JMeter arguments. It can be installed by simply copying the `.jar` file to the server and having an adequate JRE
 installed.
 
 If SSH tunneling is in use, the server will also need access to the same RMI port mappings file used on the client side.

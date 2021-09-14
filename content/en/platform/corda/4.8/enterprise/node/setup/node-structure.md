@@ -23,8 +23,8 @@ A folder containing a Corda node files has the following structure:
 ├── certificates            // The node's certificates
 ├── corda-webserver.jar     // The built-in node webserver (DEPRECATED)
 ├── corda.jar               // The core Corda libraries (This is the actual Corda node implementation)
-├── cordapps                // The CorDapp JARs installed on the node
-├── drivers                 // Contains a Jolokia driver used to export JMX metrics, the node loads any additional JAR files from this directory at startup.
+├── cordapps                // The CorDapp .jars installed on the node
+├── drivers                 // Contains a Jolokia driver used to export JMX metrics, the node loads any additional jar files from this directory at startup.
 ├── logs                    // The node's logs
 ├── network-parameters      // The network parameters automatically downloaded from the network map server
 ├── node.conf               // The node's configuration files
@@ -32,7 +32,7 @@ A folder containing a Corda node files has the following structure:
 └── shell-commands          // Custom shell commands defined by the node owner
 ```
 
-You install CorDapps on the node by placing CorDapp JARs in the `cordapps` folder.
+You install CorDapps on the node by placing CorDapp `.jar` files in the `cordapps` folder.
 
 In development mode (i.e. when `devMode = true`), the `certificates` directory is filled with pre-configured
 keystores if they do not already exist to ensure that developers can get the nodes working as quickly as

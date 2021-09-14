@@ -17,7 +17,7 @@ All mentions of `jmeter-corda.jar` on this page refer to the `jmeter-corda-<vers
 
 # Running JMeter Corda
 
-Jmeter Corda is distributed as a runnable “fat” JAR containing all the dependencies required to run the application.
+Jmeter Corda is distributed as a runnable “fat” `.jar` containing all the dependencies required to run the application.
 It comes prepacked with Corda [JMeter Samplers](jmeter-samplers.md) and a wrapper that sets up a basic configuration and allows
 configuration of SSH tunnels. The arguments for the `jmeter-corda` command line fall into two categories: there are
 a number of arguments that are consumed by the custom wrapper, followed by a double dash `--`. Anything after this
@@ -113,7 +113,7 @@ places:
 * The number of hosts to create tunnels for and their client side RMI server ports are read from the `jmeter.properties`
 file that is used to run this instance of JMeter. For using the SSH tunnel, localhost addresses are listed here as the
 actual remoting is done via SSH. By default, the five remote addresses shown below are listed in the properties file
-included in the JAR. This configuration is only relevant on the client side:
+included in the `.jar`. This configuration is only relevant on the client side:
 
 ```kotlin
 #---------------------------------------------------------------------------
@@ -160,7 +160,7 @@ and the mappings on client and server side have to match.
 
 ### Connecting to remote JMeter servers
 
-The default JMeter properties file in the Corda JMeter JAR assumes that 5 instances of JMeter server are running on hosts
+The default JMeter properties file in the Corda JMeter `.jar` assumes that 5 instances of JMeter server are running on hosts
 that can be reached via SSH tunnels. When using the run remotely function in the GUI, JMeter will try to connect to the
 hosts listed in its properties file.
 

@@ -61,10 +61,10 @@ corda --<option>
 Once the shell extensions have been installed, you can upgrade them in one of two ways.
 
 
-* Overwrite the existing JAR with the newer version. The next time you run the application, it will automatically update
+* Overwrite the existing `.jar` with the newer version. The next time you run the application, it will automatically update
 the completion file. Either restart the shell or see [above](#installing-shell-extensions) for instructions
 on making the changes take effect immediately.
-* If you wish to use a new JAR from a different directory, navigate to that directory and run:
+* If you wish to use a new `.jar` from a different directory, navigate to that directory and run:
 
 ```shell
 java -jar <name-of-JAR>

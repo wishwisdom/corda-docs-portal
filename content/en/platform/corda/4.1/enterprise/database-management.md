@@ -27,7 +27,7 @@ In Corda Enteprise, CorDapps' custom tables are created or upgraded automaticall
 Corda provides migration scripts in an XML format for its internal node and vault tables. CorDapps should provide
 migration scripts for the tables they manage. In Corda, `MappedSchemas` (see [API persistence](api-persistence.md) manage JPA
 Entities and thus the corresponding database tables. So `MappedSchemas` are the natural place to point to the
-changelog file(s) that contain the change-sets for those tables. Nodes can configure which `MappedSchemas` are included
+changelog file(s) that contain the changesets for those tables. Nodes can configure which `MappedSchemas` are included
 which means only the required tables are created. To follow standard best practices, our convention for structuring the
 change-logs is to have a "master" changelog file per `MappedSchema` that will only include release change-logs (see example below).
 

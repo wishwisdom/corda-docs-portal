@@ -415,7 +415,7 @@ GRANT SELECT, INSERT ON corda_adm.notary_request_log TO corda_pdb_user;
 
 ### JDBC driver
 
-The `ojdbc8` driver should be used when connecting to Oracle RAC database 19c. This JAR file
+The `ojdbc8` driver should be used when connecting to Oracle RAC database 19c. This `.jar` file
 should be placed in the `drivers` folder.
 
 

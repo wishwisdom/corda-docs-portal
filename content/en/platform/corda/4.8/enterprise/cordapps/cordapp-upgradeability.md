@@ -26,7 +26,7 @@ Recommendation: security hardening changes in flow processing, specifically the 
 receiver flows to use the new APIs and thus opting in to platform version 4. See [Step 5. Security: Upgrade your use of FinalityFlow](../app-upgrade-notes.md#cordapp-upgrade-finality-flow-ref) for more information.
 * All constraint types (hash, CZ whitelisted, signature) are consumable within the same transaction if there is an associated contract attachment that satisfies all of them.
 * CorDapp Contract states generated on ledger using hash constraints are not directly migratable to signature constraints in this release.
-Your compatibility zone operator may whitelist a JAR previously used to issue hash constrained states, and then you can follow the manual
+Your compatibility zone operator may whitelist a `.jar` previously used to issue hash constrained states, and then you can follow the manual
 process described in the paragraph below to migrate these to signature constraints. See [CorDapp constraints migration](cordapp-constraint-migration.md) for more information.
 * CorDapp Contract states generated on ledger using CZ whitelisted constraints are migratable to signature constraints using a manual process
 that requires programmatic code changes. See [CZ whitelisted constraints migration](cordapp-constraint-migration.md#cz-whitelisted-constraint-migration) for more information.
@@ -34,11 +34,11 @@ that requires programmatic code changes. See [CZ whitelisted constraints migrati
 * CorDapp contract attachments are not trusted from remote peers over the p2p network for the purpose of transaction verification.
 A node operator must locally install *all* versions of a Contract attachment to be able to resolve a chain of contract states from its original version.
 The RPC `uploadAttachment` mechanism can be used to achieve this (as well as conventional loading of a CorDapp by installing it in the nodes /cordapp directory).
-See [Installing the CorDapp JAR](cordapp-build-systems.md#cordapp-install-ref) and [CorDapp Contract Attachments](cordapp-build-systems.md#cordapp-contract-attachments-ref) for more information.
+See [Installing the CorDapp `.jar`](cordapp-build-systems.md#cordapp-install-ref) and [CorDapp Contract Attachments](cordapp-build-systems.md#cordapp-contract-attachments-ref) for more information.
 * CorDapp contract attachment classloader isolation has some important side-effects and edge cases to consider:
-* Contract attachments should include all 3rd party library dependencies in the same packaged JAR - we call this a “Fat JAR”,
-meaning that all dependencies are resolvable by the classloader by only loading a single JAR.
-* Contract attachments that depend on other Contract attachments from a different packaged JAR are currently supported in so far as the Attachments Classloader
+* Contract attachments should include all 3rd party library dependencies in the same packaged `.jar` - we call this a fat `.jar`,
+meaning that all dependencies are resolvable by the classloader by only loading a single `.jar`.
+* Contract attachments that depend on other Contract attachments from a different packaged `.jar` are currently supported in so far as the Attachments Classloader
 will attempt to resolve any external dependencies from the node’s application classloader. It is thus paramount that dependent Contract
 Attachments are loaded upon node startup from the respective /cordapps directory.
 
@@ -67,7 +67,7 @@ In practice, it should only be necessary to upgrade from hash or CZ whitelisted 
 signature constrained Contracts are upgradeable seamlessly (through built in serialization and code signing controls) without requiring explicit upgrades.
 * Contract attachments will be able to explicitly declare their dependencies on other Contract attachments such that these are automatically
 loaded by the Attachments Classloader (rendering the 4.0 fallback to application classloader mechanism redundant).
-This improved modularity removes the need to “Fat JAR” all dependencies together in a single jar.
+This improved modularity removes the need to fat `.jar` all dependencies together in a single jar.
 * Rolling upgrades will be fully supported.
 A Node operator will be able to pre-register (by hash or code signing public key) versions of CorDapps they are not yet ready to install locally,
 but wish to use for the purposes of transaction verification with peers running later versions of a CorDapp.

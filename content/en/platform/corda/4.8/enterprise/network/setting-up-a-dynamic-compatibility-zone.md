@@ -156,7 +156,7 @@ NetworkParameters networkParameters = new NetworkParameters(
           1024 * 1024 * 15,         // maxTransactionSize
           Instant.now(),            // modifiedTime
           2,                        // epoch
-          Collections.emptyMap()    // whitelisted contract code JARs
+          Collections.emptyMap()    // whitelisted contract code jar files
 );
 CertificateAndKeyPair signingCertAndKeyPair = loadNetworkMapCA();
 SerializedBytes<SignedDataWithCert<NetworkParameters>> bytes = SerializedBytes.from(netMapCA.sign(networkParameters));

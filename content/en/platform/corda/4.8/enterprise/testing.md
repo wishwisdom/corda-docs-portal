@@ -55,7 +55,7 @@ program starts, that you can interact with it, and that no exceptions are genera
 
 ## External Database Testing
 
-Running a node against a remote database requires several setup steps including a database setup/cleanup and adding a JDBC driver JAR to the node.
+Running a node against a remote database requires several setup steps including a database setup/cleanup and adding a JDBC driver `.jar` to the node.
 All required steps are described in Standalone database.
 
 Integration tests can be parameterised to run against any remote database (instead of the default embedded H2 instance).
@@ -105,7 +105,7 @@ The value is a placeholder which is resolved at runtime to a node organization n
 
 Cordform task `deployNodes` can be modified to override default H2 database settings.
 For each node element add `extraConfig` with all JDBC/database properties as described in Node configuration.
-The task copies JDBC driver JAR files to the `./drivers` subdirectory listed by the `drivers` property.
+The task copies JDBC driver `.jar` files to the `./drivers` subdirectory listed by the `drivers` property.
 To avoid duplicated definitions of `extraConfig` or `drivers` properties, they can be defined at the top-level with an `ext.` prefix and reused for each node entry as shown in the example below.
 
 ```bash
@@ -128,7 +128,7 @@ task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
         drivers = ext.drivers
 ```
 
-The Cordform task doesn’t create/cleanup the database and doesn’t download the required JDBC driver JAR, however it can copy already downloaded JDBC driver via the `drivers` property.
+The Cordform task doesn’t create/cleanup the database and doesn’t download the required JDBC driver `.jar`, however it can copy already downloaded JDBC driver via the `drivers` property.
 Manual database setup is described in Node configuration.
 
 {{< note >}}
@@ -136,9 +136,9 @@ To deploy nodes that are distributed with Capsule only, the Cordform task can us
 
 {{< /note >}}
 A node started programmatically via the `DriverDSL` can be configured to use a remote database.
-The JDBC driver JAR needs to be added as a Gradle runtime dependency for the `node` module in `build.gradle`.
+The JDBC driver `.jar` needs to be added as a Gradle runtime dependency for the `node` module in `build.gradle`.
 The file already contains conditional addition of JDBC dependencies of supported databases.
-For a given JDBC dependency, copy it outside of the conditional to ensure that it is always gets added to the node JAR.
+For a given JDBC dependency, copy it outside of the conditional to ensure that it is always gets added to the node `.jar`.
 
 For each node, pass JDBC/database properties described in Node configuration via the `customOverrides` parameter of the `startNode` method, e.g.:
 
@@ -168,7 +168,7 @@ To switch to using the Gradle runner:
 
 
 If you would prefer to use the built in IntelliJ JUnit test runner, you can add some code to your `build.gradle` file and
-it will copy your quasar JAR file to the lib directory.
+it will copy your quasar `.jar` file to the lib directory.
 
 {{< note >}}
 Before creating the IntelliJ run configurations for these unit tests

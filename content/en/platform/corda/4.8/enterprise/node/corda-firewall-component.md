@@ -133,7 +133,7 @@ from the local bridge to the original node’s float and then on to the original
 
 
 * A supported Java distribution (see [Getting set up for CorDapp development](../cordapps/getting-set-up.md/))
-* Corda Enterprise JAR
+* Corda Enterprise `.jar`
 
 The simplest development deployment of the node is without firewall and thus just use the embedded bridge and Peer-to-Peer
 Artemis with the node as TLS endpoint and to have the outgoing packets use the internal bridge functionality.
@@ -149,8 +149,8 @@ where this is the only available option:
 
 
 * A supported Java distribution (see [Getting set up for CorDapp development](../cordapps/getting-set-up.md/))
-* Corda Enterprise JAR
-* Corda Firewall JAR
+* Corda Enterprise `.jar`
+* Corda Firewall `.jar`
 
 The next simplest deployment is when combined Bridge/Float component is segregated away from Corda Node.
 
@@ -222,8 +222,8 @@ networkParametersPath = network-parameters
 
 
 * A supported Java distribution (see [Getting set up for CorDapp development](../cordapps/getting-set-up.md/))
-* Corda Enterprise JAR
-* Corda Firewall JAR
+* Corda Enterprise `.jar`
+* Corda Firewall `.jar`
 
 This is a more complete deployment which includes a DMZ and separate processes for outbound and inbound connectivity. The process deployed into DMZ is
 called `Float`, also known as `BridgeOuter`. The process that sits along with Corda Node in the Green Zone is called `Bridge`,
@@ -318,8 +318,8 @@ floatOuterConfig {
 
 
 * A supported Java distribution (see [Getting set up for CorDapp development](../cordapps/getting-set-up.md/))
-* Corda Enterprise JAR
-* Corda Firewall JAR
+* Corda Enterprise `.jar`
+* Corda Firewall `.jar`
 * SOCKS Proxy
 
 Some organisations require dynamic outgoing connections to operate via a SOCKS proxy. The code supports this option
@@ -413,8 +413,8 @@ floatOuterConfig {
 
 
 * A supported Java distribution (see [Getting set up for CorDapp development](../cordapps/getting-set-up.md/))
-* Corda Enterprise JAR
-* Corda Firewall JAR
+* Corda Enterprise `.jar`
+* Corda Firewall `.jar`
 * Zookeeper v3.6.1
 * Optional: SOCKS Proxy
 
@@ -548,8 +548,8 @@ More specifically, in order to ensure optimal performance it is required:
 
 
 * A supported Java distribution (see [Getting set up for CorDapp development](../cordapps/getting-set-up.md/))
-* Corda Enterprise JAR
-* Corda Firewall JAR
+* Corda Enterprise `.jar`
+* Corda Firewall `.jar`
 * Apache Artemis v2.6.2 or RedHat amq broker v7.2.2
 * Optional: Zookeeper v3.6.1 if using Bridge cluster
 

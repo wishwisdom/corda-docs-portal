@@ -63,7 +63,7 @@ where:
 * RANDOM_ID := a random generated value identifying the set of migrations, to aid with log parsing
 * ID := Liquibase [change set ID](https://www.liquibase.org/documentation/changeset.html)
 * FILE_NAME := the Liquibase file which couldn’t be found or parsed, occurs with STATUS=”error”
-* CORDAPP := the CorDapp JAR file name containing the Database Management Script or “node” value for Corda node core tables
+* CORDAPP := the CorDapp `.jar` file name containing the Database Management Script or “node” value for Corda node core tables
 * STATUS := the status for the entire database schema initialisation process and a specific change sets:
 |        “start” - start of the whole database migration process,
 |        “to be run” - the list of change sets before migration run,

@@ -95,11 +95,11 @@ Any CorDapps provided when bootstrapping a network will be scanned for contracts
 If you only wish to whitelist the CorDapps but not copy them to each node then run with the `--copy-cordapps=No` option.
 
 {{< /note >}}
-The CorDapp JARs will be hashed and scanned for `Contract` classes. These contract class implementations will become part of the whitelisted contracts in the network parameters (see `NetworkParameters.whitelistedContractImplementations` [network map](../../network/network-map.html)).
+The CorDapp `.jar` files will be hashed and scanned for `Contract` classes. These contract class implementations will become part of the whitelisted contracts in the network parameters (see `NetworkParameters.whitelistedContractImplementations` [network map](../../network/network-map.html)).
 
-By default the Bootstrapper will whitelist all the contracts found in the unsigned CorDapp JARs (a JAR file not signed by jarSigner tool). Whitelisted contracts are checked by *Zone constraints*, while contract classes from signed JARs will be checked by *Signature constraints*. To prevent certain contracts from unsigned JARs from being whitelisted, add their fully qualified class name in the `exclude_whitelist.txt`. These will instead use the more restrictive `HashAttachmentConstraint`. To add certain contracts from signed JARs to whitelist, add their fully qualified class name in the `include_whitelist.txt`. Refer to [API contract constraints](../../cordapps/api-contract-constraints.html) to understand the implication of different constraint types before adding `exclude_whitelist.txt` or `include_whitelist.txt` files.
+By default the Bootstrapper will whitelist all the contracts found in the unsigned CorDapp `.jar` files (a `.jar` file not signed by jarSigner tool). Whitelisted contracts are checked by *Zone constraints*, while contract classes from signed `.jar` files will be checked by *Signature constraints*. To prevent certain contracts from unsigned `.jar` files from being whitelisted, add their fully qualified class name in the `exclude_whitelist.txt`. These will instead use the more restrictive `HashAttachmentConstraint`. To add certain contracts from signed `.jar` files to whitelist, add their fully qualified class name in the `include_whitelist.txt`. Refer to [API contract constraints](../../cordapps/api-contract-constraints.html) to understand the implication of different constraint types before adding `exclude_whitelist.txt` or `include_whitelist.txt` files.
 
-The `exclude_whitelist.txt` and `include_whitelist.txt` files should be in the same root directory as the CorDapp JAR files.
+The `exclude_whitelist.txt` and `include_whitelist.txt` files should be in the same root directory as the CorDapp `.jar` files.
 
 For example:
 
@@ -385,9 +385,9 @@ bootstrapper [-hvV] [--copy-cordapps=<copyCordapps>] [--dir=<dir>]
 ```
 
 
-* `--dir=<dir>`: Root directory containing the node configuration files and CorDapp JARs that will form the test network.
+* `--dir=<dir>`: Root directory containing the node configuration files and CorDapp `.jar` files that will form the test network.
 It may also contain existing node directories. Defaults to the current directory.
-* `--copy-cordapps=<copyCordapps>`: Whether or not to copy the CorDapp JARs into the nodes’ ‘cordapps’ directory. Possible values:
+* `--copy-cordapps=<copyCordapps>`: Whether or not to copy the CorDapp `.jar` files into the nodes’ ‘cordapps’ directory. Possible values:
 FirstRunOnly, Yes, No. Default: FirstRunOnly.
 * `--verbose`, `--log-to-console`, `-v`: If set, prints logging to the console as well as to a file.
 * `--logging-level=<loggingLevel>`: Enable logging at this level and higher. Possible values: ERROR, WARN, INFO, DEBUG, TRACE. Default: INFO.

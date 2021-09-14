@@ -55,9 +55,9 @@ Cannot be set at the same time as the `networkServices` option.
 
 ## `cordappSignerKeyFingerprintBlacklist`
 
-List of the public keys fingerprints (SHA-256 of public key hash) not allowed as Cordapp JARs signers.
+List of the public keys fingerprints (SHA-256 of public key hash) not allowed as Cordapp `.jar` files signers.
 The node will not load Cordapps signed by those keys.
-The option takes effect only in production mode and defaults to Corda development keys (`["56CA54E803CB87C8472EBD3FBC6A2F1876E814CEEBF74860BD46997F40729367", "83088052AF16700457AE2C978A7D8AC38DD6A7C713539D00B897CD03A5E5D31D"]`), in development mode any key is allowed to sign Cordpapp JARs.
+The option takes effect only in production mode and defaults to Corda development keys (`["56CA54E803CB87C8472EBD3FBC6A2F1876E814CEEBF74860BD46997F40729367", "83088052AF16700457AE2C978A7D8AC38DD6A7C713539D00B897CD03A5E5D31D"]`), in development mode any key is allowed to sign CorDapp `.jar` files.
 
 This property requires retrieving the hashes of public keys that need to be blacklisted.
 
@@ -435,9 +435,9 @@ For non-localhost address the database password needs to be set in `dataSourcePr
 
 ## `jarDirs`
 
-An optional list of file system directories containing JARs to include in the classpath when launching via `corda.jar` only.
+An optional list of file system directories containing `.jar` files to include in the classpath when launching via `corda.jar` only.
 Each should be a string.
-Only the JARs in the directories are added, not the directories themselves.
+Only the `.jar` files in the directories are added, not the directories themselves.
 This is useful for including JDBC drivers and the like. e.g. `jarDirs = [ ${baseDirectory}"/libs" ]`.
 (Note that you have to use the `baseDirectory` substitution value when pointing to a relative path).
 
@@ -448,7 +448,7 @@ If an item in a list is overridden via an environment variable/system property, 
 *Default:* not defined
 
 This property is only available for Corda distributed with Capsule. For the Corda tarball distribution this option is unavailable.
-It's advisable to copy any required JAR files to the 'drivers' subdirectory of the node base directory.
+It's advisable to copy any required `.jar` files to the 'drivers' subdirectory of the node base directory.
 
 ## `jmxMonitoringHttpPort`
 

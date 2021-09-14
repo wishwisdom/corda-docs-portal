@@ -21,7 +21,7 @@ The **flow hospital** refers to a built-in node service that manages flows that 
 
 This service is responsible for recording, tracking, diagnosing, recovering and retrying flows. It determines whether errored flows should be retried
 from their previous checkpoints or have their errors propagate. Flows may be recoverable under certain scenarios (eg. manual intervention
-may be required to install a missing contract JAR version). For a given errored flow, the flow hospital service determines the next course of
+may be required to install a missing contract `.jar` version). For a given errored flow, the flow hospital service determines the next course of
 action towards recovery and retry.
 
 {{< note >}}
@@ -74,7 +74,7 @@ Database connection pooling errors are dealt with. If this exception occurs, the
 Any `SQLException` that is thrown and not handled by any of the scenarios detailed above, will be kept in for observation after their first failure.
 * **Finality Flow handling** - Corda 3.x (old style) `FinalityFlow` and Corda 4.x `ReceiveFinalityFlow` handling:
 If on the receive side of the finality flow, any error will result in the flow being kept in for observation to allow the cause of the
-error to be rectified (so that the transaction isn’t lost if, for example, associated contract JARs are missing).
+error to be rectified (so that the transaction isn’t lost if, for example, associated contract `.jar` files are missing).
 Intervention is expected to be “rectify error, perhaps uploading attachment, and restart node” (or alternatively reject and call *killFlow*).
 * `FlowTimeoutException`:
 This is used internally by the notary client flow when talking to an HA notary.  It’s used to cause the client to try and talk to a different

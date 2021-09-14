@@ -34,9 +34,9 @@ configuration information, and capabilities:
 * The notary worker and database machines need to be configured to use reliable and trusted time servers. The time
 source has to be monotonic and support leap second smearing.
 * Java runtime
-* Corda Enterprise JAR
+* Corda Enterprise `.jar`
 * [Notary Health Check](../notary-healthcheck.md) Tool
-* HA Utilities JAR to run [notary registration](../ha-utilities.md#notary-reg-tool)
+* HA Utilities `.jar` to run [notary registration](../ha-utilities.md#notary-reg-tool)
 * Root access to a Linux machine or VM to install the selected database
 * The private IP addresses of your database hosts
 * The public IP addresses of your notary hosts

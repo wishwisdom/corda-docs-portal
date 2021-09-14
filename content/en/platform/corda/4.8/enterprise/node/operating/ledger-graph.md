@@ -101,7 +101,7 @@ If you are upgrading from version 1.0 of **Collaborative Recovery**, then you sh
 Do not install LedgerGraph on nodes running **Collaborative Recovery** CorDapp versions earlier than **v1.1**.
 {{< /warning>}}
 
-Using the file transfer protocol of your choice, add the necessary JAR files for `ledger-graph` and, optionally, <nobr>`ledger-graph-confidential-identities`</nobr> to the `cordapps` sub-directory of your Corda node.
+Using the file transfer protocol of your choice, add the necessary `.jar` files for `ledger-graph` and, optionally, <nobr>`ledger-graph-confidential-identities`</nobr> to the `cordapps` sub-directory of your Corda node.
 
 Before proceeding, check to ensure that your transfer completed successfully and that the files' sizes don't differ from the originals that you received.
 
@@ -150,7 +150,7 @@ You can tune **LedgerGraph**'s behaviour through a small set of configuration pa
 
 ## Configure LedgerGraph parameters
 
-To use LedgerGraph's configuration parameters, create a configuration file named after the **LedgerGraph** `.jar` file. For example, if the JAR file is called `ledger-graph-1.1.jar`, the configuration file would be `<corda_node_dir>/cordapps/config/ledger-graph-1.1.conf`.
+To use LedgerGraph's configuration parameters, create a configuration file named after the **LedgerGraph** `.jar` file. For example, if the `.jar` file is called `ledger-graph-1.1.jar`, the configuration file would be `<corda_node_dir>/cordapps/config/ledger-graph-1.1.conf`.
 
 If the configuration parameter is not specified, or the configuration file is not present, the default value(s) will be used.
 
@@ -172,7 +172,7 @@ In order for LedgerGraph to properly identify transactions belonging to specific
 
 To configure LedgerGraph for use with Confidential Identities:
 
-1. Deploy the <code>ledger-<b>graph</b>-confidential-identities</code> JAR file to `<corda_node_dir>/cordapps`.
+1. Deploy the <code>ledger-<b>graph</b>-confidential-identities</code> `.jar` file to `<corda_node_dir>/cordapps`.
 
 2. Edit the node configuration file `<corda_node_dir>/node.conf`, adding the following flow override:
 

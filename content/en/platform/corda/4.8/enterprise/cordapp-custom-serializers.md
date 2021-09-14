@@ -116,7 +116,7 @@ public class ExampleProxy {
 
 /**
  * This is the custom serializer that will automatically loaded into the serialization
- * framework when the CorDapp JAR is scanned at runtime.
+ * framework when the CorDapp .jar is scanned at runtime.
  */
 public class ExampleSerializer implements SerializationCustomSerializer<Example, ExampleProxy> {
 

@@ -321,7 +321,7 @@ You could sign the CorDapp automatically by:
 Nodes only accept CorDapps signed by Corda development certificates when running in development mode. If you need to run a CorDapp signed by the (default) development key in the production mode (for example, for testing), add the `cordappSignerKeyFingerprintBlacklist = []` property set to an empty list. See
 [Configuring a node](../node/setup/corda-configuration-file.md#corda-configuration-file-signer-blacklist)).
 
-You can use one `build.gradle` file for both a development build (defaulting to the Corda development keystore) and for a production build (using an external keystore) by contexually overwriting signing options using system properties.  
+You can use one `build.gradle` file for both a development build (defaulting to the Corda development keystore) and for a production build (using an external keystore) by contexually overwriting signing options using system properties.
 
 An example of the system properties setup for a build process that overrides signing options:
 
@@ -588,7 +588,7 @@ Future versions of Corda will de-couple this custom schema dependency to remove 
 
 CorDapp Contract `.jar`s must be installed on a node by a trusted uploader, either by:
 
-* Installing manually as per [Installing the CorDapp JAR](#cordapp-install-ref) and re-starting the node.
+* Installing manually as per [Installing the CorDapp `.jar`](#cordapp-install-ref) and re-starting the node.
 * Uploading the attachment `.jar` to the node via RPC, either programmatically (see [Connecting to a node via RPC](../node/operating/clientrpc.md#clientrpc-connect-ref))
 or via the shell using the command: `>>> run uploadAttachment jar: path/to/the/file.jar`.
 

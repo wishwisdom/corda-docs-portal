@@ -25,7 +25,7 @@ a database service is located on the same machine as the notary worker.
 
 * Stop the service on the notary worker you are going to migrate. Other notary worker
 nodes are still able to handle requests. No service downtime is expected.
-* Copy the certificates directory, configuration files and Corda JAR file to the new machine.
+* Copy the certificates directory, configuration files and Corda `.jar` file to the new machine.
 * Update the P2P address configuration in the config file on the new machine if required.
 * Start the notary worker on the new machine.
 * Check the logs and monitoring service to see if the notary worker node started as expected and is successfully handling notarisation requests.

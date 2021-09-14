@@ -26,7 +26,7 @@ To be compatible with Corda Enterprise, CorDapps need to bundle database migarat
 ## Flow upgrades
 
 If any backwards-incompatible changes have been made (see [What constitutes a non-backwards compatible flow change?](cordapps/upgrading-cordapps.md#what-constitutes-a-non-backwards-compatible-flow-change)
-for more information), the upgrade method detailed below will need to be followed. Otherwise the CorDapp JAR can just
+for more information), the upgrade method detailed below will need to be followed. Otherwise the CorDapp `.jar` can just
 be replaced with the new version.
 
 
@@ -54,7 +54,7 @@ agree to the proposed upgrade. The following combinations of upgrades are possib
 ## Running the upgrade
 
 If a contract or state requires an explicit upgrade then all states will need updating to the new contract at a time agreed
-by all participants. The updated CorDapp JAR needs to be distributed to all relevant parties in advance of the changeover
+by all participants. The updated CorDapp `.jar` needs to be distributed to all relevant parties in advance of the changeover
 time.
 
 In order to perform the upgrade, follow the following steps:
@@ -71,7 +71,7 @@ In order to perform the upgrade, follow the following steps:
 
 
 * Once all flows have completed, stop the node
-* Replace the existing JAR with the new one
+* Replace the existing `.jar` with the new one
 * Make any database changes required to any custom vault tables for the upgraded CorDapp,
 following the database upgrade steps in [Deploying CorDapps on a node](node/operating/node-operations-cordapp-deployment.md).
 The database update for a CorDapp upgrade follows the same steps as database setup for a new CorDapp.

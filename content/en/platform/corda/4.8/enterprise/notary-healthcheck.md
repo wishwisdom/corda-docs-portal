@@ -18,8 +18,8 @@ This is a simple CorDapp to check if notaries on a Corda network are up and resp
 
 ## Installation
 
-To install the app, copy the `notaryhealthcheck-cordapp` and the `notaryhealthcheck-contract` JARs to the `cordapps` directory
-of a node that will run the checks. The `notaryhealthcheck-contract` JAR also needs to be installed on all validating
+To install the app, copy the `notaryhealthcheck-cordapp` and the `notaryhealthcheck-contract` `.jar` files to the `cordapps` directory
+of a node that will run the checks. The `notaryhealthcheck-contract` `.jar` also needs to be installed on all validating
 notaries that are to be checked.
 
 

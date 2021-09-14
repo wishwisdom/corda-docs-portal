@@ -52,8 +52,8 @@ handling, and ensures the Corda service is run at boot.
 `sudo adduser --system --no-create-home --group corda`
 
 * Create a directory called `/opt/corda` and change its ownership to the user you want to use to run Corda:`mkdir /opt/corda; chown corda:corda /opt/corda`
-* Place the Enterprise Corda JAR `corda-4.8.jar` in `/opt/corda`
-* (Optional) Copy the Corda webserver JAR provided to your organization
+* Place the Enterprise Corda `.jar` `corda-4.8.jar` in `/opt/corda`
+* (Optional) Copy the Corda webserver `.jar` provided to your organization
 (under `/corda-webserver-4.8.jar`) and place it in `/opt/corda`
 * Create a directory called `cordapps` in `/opt/corda` and save your CorDapp jar file to it. Alternatively, download one of
 our [sample CorDapps](https://www.corda.net/samples/) to the `cordapps` directory
@@ -252,7 +252,7 @@ at boot, and means the Corda service stays running with no users connected to th
 
 
 
-* Create a Corda directory and copy the Enterprise Corda JAR `corda-4.8.jar`.
+* Create a Corda directory and copy the Enterprise Corda `.jar` `corda-4.8.jar`.
 Here’s an example using PowerShell:
 
 ```shell

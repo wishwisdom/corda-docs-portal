@@ -97,9 +97,9 @@ used that can drive the respective CorDapp via RPC.
 
 ### Loading a custom sampler client
 
-The JAR file for the custom sampler needs to be added to the search path of JMeter in order for the Java sampler to
+The `.jar` file for the custom sampler needs to be added to the search path of JMeter in order for the Java sampler to
 be able to load it. The `-XadditionalSearchPaths` flag can be used to do this. It takes a list of semicolon separated
-directories or JAR files that all will be scanned by JMeter and added to the classpath to run tests.
+directories or `.jar` files that all will be scanned by JMeter and added to the classpath to run tests.
 
 If the custom sampler uses flows or states from another CorDapp that is not packaged with the
 JMeter Corda package, this needs to be on the classpath for the JMeter instance running the sampler as the RPC interface
@@ -114,14 +114,14 @@ or:
 java -jar jmeter-corda.jar <other args...> -XaddditionalSearchPaths=/home/<user>/mySampler.jar;<node installation dir>/cordapps/myCordapp.jar
 ```
 
-When using JMeter servers for remote invocation, the exact same version of the sampler JAR needs to be deployed on each
+When using JMeter servers for remote invocation, the exact same version of the sampler `.jar` needs to be deployed on each
 server, and be added to the command line of the JMeter server process (with the same `-XadditionalSearchPaths` argument).
 In this case, the node running the CorDapp and the JMeter server process both need to have the same version of the CorDapp - it needs to be
 installed as a CorDapp on the node, and needs to be on the class path of the JMeter server process. The JMeter process can either load its own
-copy of the CorDapp JAR or point to the CorDapp folder of the node installation.
+copy of the CorDapp `.jar` or point to the CorDapp folder of the node installation.
 
 In the case of JMeter remote invocation, the JMeter client might not actually  need the CorDapp package on the classpath,
-as the interaction with the CorDapp is happening server side - in this case, only the server process needs to have the CorDapp JAR
+as the interaction with the CorDapp is happening server side - in this case, only the server process needs to have the CorDapp `.jar`
 file on its search path.
 
 

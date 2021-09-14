@@ -184,9 +184,9 @@ Time after which nodes are considered to be unresponsive and removed from networ
 
 * **packageOwnership**:
 List of the network-wide java packages that were successfully claimed by their owners.
-Any CorDapp JAR that offers contracts and states in any of these packages must be signed by the owner.
+Any CorDapp `.jar` that offers contracts and states in any of these packages must be signed by the owner.
 This ensures that when a node encounters an owned contract it can uniquely identify it and knows that all other nodes can do the same.
-Encountering an owned contract in a JAR that is not signed by the rightful owner is most likely a sign of malicious behaviour, and should be reported.
+Encountering an owned contract in a `.jar` that is not signed by the rightful owner is most likely a sign of malicious behaviour, and should be reported.
 The transaction verification logic will throw an exception when this happens.
 Read more about *Package ownership* here “[Package namespace ownership](../node/deploy/env-dev.md#package-namespace-ownership)”.
 

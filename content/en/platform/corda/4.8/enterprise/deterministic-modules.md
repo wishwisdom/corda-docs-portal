@@ -32,18 +32,18 @@ deterministic versions of all their dependent libraries, e.g. `kotlin-stdlib`.
 ## Generating the Deterministic Modules
 
 `jdk8u-deterministic` is a “pseudo JDK” image that we can point the Java and Kotlin compilers to. It downloads the
-`rt.jar` containing a deterministic subset of the Java 8 APIs from the Artifactory.To build a new version of this JAR and upload it to the Artifactory, see the `create-jdk8u` module. This is a
+`rt.jar` containing a deterministic subset of the Java 8 APIs from the Artifactory.To build a new version of this `.jar` and upload it to the Artifactory, see the `create-jdk8u` module. This is a
 standalone Gradle project within the Corda repository that will clone the `deterministic-jvm8` branch of Corda’s
 [OpenJDK repository](https://github.com/corda/openjdk) and then build it. (This currently requires a C++ compiler,
 GNU Make and a UNIX-like development environment.)`core-deterministic` and `serialization-deterministic` are generated from Corda’s `core` and `serialization`
 modules respectively using both [ProGuard](https://www.guardsquare.com/en/proguard) and Corda’s `JarFilter` Gradle
 plugin. Corda developers configure these tools by applying Corda’s `@KeepForDJVM` and `@DeleteForDJVM`
-annotations to elements of `core` and `serialization` as described [here](#deterministic-annotations).The build generates each of Corda’s deterministic JARs in six steps:
+annotations to elements of `core` and `serialization` as described [here](#deterministic-annotations).The build generates each of Corda’s deterministic `.jar` files in six steps:
 
-* Some *very few* classes in the original JAR must be replaced completely. This is typically because e original
+* Some *very few* classes in the original `.jar` must be replaced completely. This is typically because e original
 class uses something like `ThreadLocal`, which is not available in the deterministic Java APIs, and t the
-class is still required by the deterministic JAR. We must keep such classes to a minimum!
-* The patched JAR is analysed by ProGuard for the first time using the following rule:
+class is still required by the deterministic `.jar`. We must keep such classes to a minimum!
+* The patched `.jar` is analysed by ProGuard for the first time using the following rule:
 
 ```groovy
 keep '@interface net.corda.core.KeepForDJVM { *; }'
@@ -75,7 +75,7 @@ return a value will throw `UnsupportedOperationException`, whereas `void` or `Un
 * After the `@DeleteForDJVM` elements have been filtered out, the classes are rescanned using ProGuard  remove any more code that has now become unreachable.
 * The remaining classes define our deterministic subset. However, the `@kotlin.Metadata` annotations  the compiled Kotlin classes still contain references to all of the functions and properties that ProGuard has leted. Therefore
 we now use the `JarFilter` to delete these references, as otherwise the Kotlin compiler will pretend at the deleted functions and properties are still present.
-* Finally, we use ProGuard again to validate our JAR against the deterministic `rt.jar`:
+* Finally, we use ProGuard again to validate our `.jar` against the deterministic `rt.jar`:
 This step will fail if ProGuard spots any Java API references that still cannot be satisfied by the deterministic `rt.jar`, and hence it will break the build.
 
 ## Configuring IntelliJ with a Deterministic SDK
@@ -133,7 +133,7 @@ where `rt.jar` here is this renamed artifact:
 
 
 * Open IntelliJ and select `File/Project Structure/Platform Settings/SDKs`. The “1.8 (Deterministic)” SDK
-should now be present. Select it and then click on the `Classpath` tab. Press the “Add” / “Plus” button to add `rt.jar` to the SDK’s classpath. Then select the `Annotations` tab and include the same JAR(s) as
+should now be present. Select it and then click on the `Classpath` tab. Press the “Add” / “Plus” button to add `rt.jar` to the SDK’s classpath. Then select the `Annotations` tab and include the same `.jar`(s) as
 the other SDKs.
 
 
@@ -169,14 +169,14 @@ but still build everything using Gradle with the full JDK.
 ## Testing the Deterministic Modules
 
 The `core-deterministic:testing` module executes some basic JUnit tests for the `core-deterministic` and
-`serialization-deterministic` JARs. These tests are compiled against the deterministic `rt.jar`, although
+`serialization-deterministic` `.jar` files. These tests are compiled against the deterministic `rt.jar`, although
 they are still executed using the full JDK.
 
 The `testing` module also has two sub-modules:
 
 1. `core-deterministic:testing:data`
     * This module generates test data such as serialised transactions and elliptic curve key pairs using the full
-non-deterministic `core` library and JDK. This data is all written into a single JAR which the `testing`
+non-deterministic `core` library and JDK. This data is all written into a single `.jar` which the `testing`
 module adds to its classpath.
 2. `core-deterministic:testing:common`
     * This module provides the test classes which the `testing` and `data` modules need to share. It is therefore
@@ -185,7 +185,7 @@ compiled against the deterministic API subset.
 ## Applying @KeepForDJVM and @DeleteForDJVM annotations
 
 Corda developers need to understand how to annotate classes in the `core` and `serialization` modules correctly
-in order to maintain the deterministic JARs.
+in order to maintain the deterministic `.jar` files.
 
 
 {{< note >}}
@@ -205,7 +205,7 @@ accompanying Kotlin `xxxKt` class.
 For more information about how `JarFilter` is processing the byte-code inside `core` and `serialization`,
 use Gradle’s `--info` or `--debug` command-line options.
 
-Classes that *must* be included in the deterministic JAR should be annotated as `@KeepForDJVM`.
+Classes that *must* be included in the deterministic `.jar` should be annotated as `@KeepForDJVM`.
 To preserve any Kotlin functions, properties or type aliases that have been declared outside of a `class`, you should annotate the source file’s `package` declaration instead:
 
 ```kotlin
@@ -217,7 +217,7 @@ infix fun Temporal.until(endExclusive: Temporal): Duration = Duration.between(th
 ```
 
 
-Elements that *must* be deleted from classes in the deterministic JAR should be annotated as `@DeleteForDJVM`.
+Elements that *must* be deleted from classes in the deterministic `.jar` should be annotated as `@DeleteForDJVM`.
 You must also ensure that a deterministic class’s primary constructor does not reference any classes that are
 not available in the deterministic `rt.jar`.
 
