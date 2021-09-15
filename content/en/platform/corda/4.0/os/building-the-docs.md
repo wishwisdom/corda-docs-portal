@@ -1,12 +1,12 @@
 ---
 aliases:
-- /releases/release-V3.1/building-the-docs.html
+- /releases/release-V4.0/building-the-docs.html
 date: '2020-01-08T09:59:25Z'
 menu:
-  corda-os-3-1:
-    identifier: corda-os-3-1-building-the-docs
-    parent: corda-os-3-1-other-index
-    weight: 1020
+  corda-os-4-0:
+    identifier: corda-os-4-0-building-the-docs
+    parent: corda-os-4-0-contributing-index
+    weight: 1060
 tags:
 - building
 - docs
@@ -48,7 +48,7 @@ The documentation for all released versions of Corda OS, Corda Enterprise, and C
 
 For example:
 
-`../corda-docs/content/en/corda-os/1.0`
+`../corda-docs-portal/content/en/platform/corda/4.0/os`
 
 ## Edit web pages directly in Visual Studio Code
 

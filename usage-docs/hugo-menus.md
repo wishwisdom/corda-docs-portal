@@ -16,7 +16,7 @@ Each folder above a software version is a [Hugo section](https://gohugo.io/conte
 
 Each folder is a section because it contains an `_index.md`.
 
-## Menus 
+## Menus
 
 ### Basics
 
@@ -42,7 +42,7 @@ Menu definitions are in two places:
 
 The main left-hand-menu for a software version is set by declaring the following in the front-matter in its `_index.md` front-matter.
 
-For example, for `content/en/docs/corda-os/4.4/_index.md`:
+For example, for `content/en/platform/corda/4.4/os/_index.md`:
 
 ```
 ---
@@ -65,7 +65,7 @@ This task is performed most commonly.
 Suppose we want to add:
 
 ```
-/content/en/docs/corda-os/4.4/api-flows.md
+/content/en/platform/corda/4.4/os/api-flows.md
 ```
 
 to the Corda OS 4.4 menu, and specifically to the "API" menu *entry*.
@@ -111,7 +111,7 @@ If you have created a new software version, e.g. suppose Corda 4.4 doesn't exist
 Then to add the following page to the `versions` menu:
 
 ```
-/content/en/docs/corda-os/4.4/_index.md
+/content/en/platform/corda//4.4/os/_index.md
 ```
 
 Use the following front-matter:
@@ -141,7 +141,7 @@ name = "Corda API"
 weight = 30
 ```
 
-Edit `/content/en/docs/corda-os/4.4/_index.md`
+Edit `/content/en/platform/corda/4.4/os/_index.md`
 
 Use the following front-matter:
 
@@ -260,4 +260,3 @@ The menu would render as:
   * You can't click me
     * [I'm the third level](#)
       * [4th level](#)
-      

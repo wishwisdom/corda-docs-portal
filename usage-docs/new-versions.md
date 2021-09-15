@@ -30,8 +30,8 @@ We suggest this format for consistency.
 
 Since most teams are likely to just copy previous content, follow these steps, for example Corda OS:
 
-* `cd content/en/docs/corda-os`
-* `cp -r 4.4 4.5`
+* `cd content/en/platform/corda/`
+* `cp -r 4.4/os 4.5/os`
 
 Then search and replace in all files:
 
@@ -39,15 +39,16 @@ Then search and replace in all files:
 
 Edit `config/menus.en.toml`, copy the menu entries for `corda-os-4-4` and rename them to `corda-os-4-5`.
 
-Lastly, edit `content/en/docs/corda-os/_index.md` as described below.
+Lastly, edit `content/en/platform/corda/4.5/os/_index.md` as described below.
 
 #### From Scratch
 
 Using Corda OS as an example:
 
-* `cd content/en/docs/corda-os`
+* `cd content/en/platform/corda/`
 * `mkdir 4.5`
-* `cp 4.4/_index.md 4.5/_index.md`
+* `mkdir os`
+* `cp 4.4/os/_index.md 4.5/os/_index.md`
 
 update `_index.md` as described below, and start adding new content.
 
@@ -78,7 +79,7 @@ version: '4.4'
 ---
 ```
 
-#### `title` 
+#### `title`
 
 1. is the page title that appears in the `versions` menu.
 2. is the title that appears in the search box
@@ -87,7 +88,7 @@ version: '4.4'
 
 1. It states the *unique* menu id for this entire section, and what is rendered in the left-hand side.
 
-#### `menu` 
+#### `menu`
 
 This states that this page (only) appears in the `versions` menu drop-down.  The `weight` will determine where in the `versions` menu this entry will be.
 

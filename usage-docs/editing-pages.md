@@ -53,10 +53,10 @@ There are two ways to create a page:
 From the root of the repository:
 
 ```shell
-hugo new docs/corda-os/4.4/my-new-page.md
+hugo new en/platform/corda/4.4/os/my-new-page.md
 ```
 
-This will produce a new file in `/content/en/docs/corda-os/4.4/my-new-page.md`
+This will produce a new file in `/content/en/platform/corda/4.4/os/my-new-page.md`
 
 ```markdown
 ---
