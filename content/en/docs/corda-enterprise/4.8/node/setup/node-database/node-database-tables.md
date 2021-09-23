@@ -93,9 +93,9 @@ Read more in [Network map](../../../network/network-map.md).
 
 ### Node identities
 
-The following four tables are used by the `IdentityService` and are created from the NodeInfos. They are append only tables used for persistent caching. They will also be cleared on `rpc.clearNetworkMapCache()`.
+The following four tables are used by the `IdentityService` and are created from the `NodeInfos` table. They are append-only tables used for persistent caching. They will also be cleared on `rpc.clearNetworkMapCache()`.
 
-Read more in api-identity and node-services
+Read more about [identity](../../../cordapps/api-identity.md/) and [node services](../../../node-services.md/)
 
 
 {{< table >}}
@@ -140,10 +140,13 @@ Read more in api-identity and node-services
 
 ### Network parameters
 
-Read more in [Network map](../../network/network-map.md).
-Each downloaded network parameters file will create an entry in this table.
+Each downloaded network parameters file creates an entry in this table.
 The historical network parameters are used when validating transactions, which makes this table logically part of the `Ledger`.
-It is an append only table and the size will be fairly small.
+
+Network parameters is an append-only table, and will remain small.
+
+Read more in [Network map](../../../network/network-map.md/).
+
 
 
 {{< table >}}
@@ -162,8 +165,8 @@ It is an append only table and the size will be fairly small.
 
 ## Ledger
 
-The ledger data is formed of transactions and attachments.
-In future versions this data will be encrypted using SGX.
+The ledger data is contains transactions and attachments. In future versions this data will be encrypted using SGX.
+
 Read more in [Ledger](../../../../corda-os/4.8/key-concepts-ledger.md).
 
 
