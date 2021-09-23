@@ -3,31 +3,33 @@ date: '2020-04-07T12:00:00Z'
 menu:
   corda-enterprise-4-8:
     parent: corda-enterprise-4-8-corda-nodes-configuring-db
-tags:
-- node
-- database
-- tables
+    identifier: corda-enterprise-4-8-corda-node-database-tables
 title: Database tables
 weight: 50
 ---
 
-# Database tables
+A Corda node database contains tables corresponding to the various services that the node provides. It also contains custom tables defined by the CorDapps that are installed on the node. These tables share the same database schema.
 
-A Corda node database contains tables corresponding to the various services that the node provides.
-It also contains custom tables defined by the CorDapps that are installed on the node.
-Currently all these tables share the same database schema, but in a future release they will be isolated from each other.
+Tables that maintain the ledger are append-only and the data will never change.
+
+The node database includes tables containing the following data:
+
+* [Network map](#network-map)
+* [Ledger](#ledger)
+* [Vault tables](#vault-tables)
+* [Hot-cold setup](#hot-cold-setup)
+* [Metering](#metering)
+* [Node RPC audit data](#node-rpc-audit-data`)
+* [Liquibase database migration](#liquibase-database-migration)
+
+
 
 {{< note >}}
 Unless specified otherwise the node tables are for internal use and can change between versions.
-
 {{< /note >}}
-Some tables, especially the ones where the `Ledger` is maintained are append-only and the data will never change.
-
 
 {{< warning >}}
-Manually adding, removing or updating any data should only be done with great care. Corda is a distributed ledger and modifying
-data could lead to unexpected behaviour and inconsistent views of the ledger.
-
+Manually adding, removing or updating any data should only be done with great care. Corda is a distributed ledger and modifying data could lead to unexpected behaviour and inconsistent views of the ledger.
 {{< /warning >}}
 
 
@@ -37,11 +39,9 @@ data could lead to unexpected behaviour and inconsistent views of the ledger.
 
 ### Node info
 
-These are tables that store the node info of other network participants.
-They are just a local cache that is kept in sync with the network map server.
-By calling `rpc.clearNetworkMapCache()` all these tables will be cleared and recreated from the network map server.
+The node info tables store information relating to network participants. They are a local cache that is kept in sync with the network map server. These tables can be cleared and recreated from the network map server calling `rpc.clearNetworkMapCache()`.
 
-Read more in [Network map](../../network/network-map.md).
+Read more in [Network map](../../../network/network-map.md).
 
 {{< figure alt="node info tables" width=80% zoom="/en/images/node_info_tables.png" >}}
 
@@ -93,9 +93,8 @@ Read more in [Network map](../../network/network-map.md).
 
 ### Node identities
 
-The following four tables are used by the `IdentityService` and are created from the NodeInfos.
-They are append only tables used for persistent caching.
-They will also be cleared on `rpc.clearNetworkMapCache()`.
+The following four tables are used by the `IdentityService` and are created from the NodeInfos. They are append only tables used for persistent caching. They will also be cleared on `rpc.clearNetworkMapCache()`.
+
 Read more in api-identity and node-services
 
 
